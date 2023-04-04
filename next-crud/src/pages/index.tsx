@@ -28,12 +28,12 @@ export default function Home() {
       text-white
     `}>
       <Layout titulo="Cadastro Simples" >
-        {/* <div className="flex justify-end">
-          <Botao corBotao="gray" className="mb-4">Novo Cliente</Botao>
+        <div className="flex justify-end">
+          <Botao corBotao="blue" className="mb-4">Novo Cliente</Botao>
         </div>
         <Tabela clientes={clientes}
           clienteSelecionado={clienteSelecionado}
-          clienteExcluido={clienteExcluido}></Tabela> */}
+          clienteExcluido={clienteExcluido}></Tabela>
           <Formulario />
       </Layout>
     </div>
