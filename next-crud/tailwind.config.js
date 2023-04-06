@@ -25,6 +25,10 @@ module.exports = {
   
 }
 
+// https://gist.github.com/JulianKasimir/d683ea15a83cd1e229c2fbcbe3637c47
+
+// https://stackoverflow.com/questions/60989191/purgecss-whitelist-patterns-with-tailwindcss
+
 // const defaultTheme = require('tailwindcss/defaultTheme')
 
 // module.exports = {
