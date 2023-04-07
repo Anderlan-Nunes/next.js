@@ -7,6 +7,9 @@ import { useState } from 'react';
 
 
 export default function Home() {
+  
+  const [cliente, setCliente] = useState<Cliente>(Cliente.vazio()) // 1
+  const [visivel, setVisivel] = useState<'form' | 'tabela'>('tabela')
 
   const clientes = [
     new Cliente("Tsunade", 37, "1"),
@@ -16,18 +19,26 @@ export default function Home() {
   ]
 
   function clienteSelecionado(cliente: Cliente) {
+    setCliente(cliente)
     console.log(cliente.nome)
+    setVisivel('form')
   }
 
   function clienteExcluido(cliente: Cliente) {
     console.log(`Excluir ${cliente.nome}`)
   }
 
+  function novoCliente(){
+    // seta um cliente vazio
+    setCliente(Cliente.vazio())
+    console.log(cliente)
+    setVisivel('form')
+  }
   function salvarCliente(cliente: Cliente){
     console.log(cliente)
+    setVisivel('tabela')
   }
 
-  const [visivel, setVisivel] = useState<'form' | 'tabela'>('tabela')
   
   return (
     <div className={`
@@ -39,15 +50,18 @@ export default function Home() {
         {visivel === 'tabela' ? (
           <>
             <div className="flex justify-end">
-              <Botao corBotao="blue" className="mb-4" onClick={() => setVisivel('form')}>Novo Cliente</Botao>
+              <Botao corBotao="blue" className="mb-4" 
+                onClick={novoCliente}
+              >Novo Cliente</Botao> 
             </div>
+
             <Tabela clientes={clientes}
               clienteSelecionado={clienteSelecionado}
               clienteExcluido={clienteExcluido} />
           </>
 
         ) : (<Formulario 
-            cliente={clientes[1]}
+            cliente={cliente} // vou passar meu estado cliente
             cancelado={() => setVisivel('tabela')}
             clienteMudou={salvarCliente}
           />)
@@ -57,3 +71,5 @@ export default function Home() {
     </div>
   )
 }
+
+// vou precisar criar um stado para armazenar meu cliento vou inicica-lo como vazio
