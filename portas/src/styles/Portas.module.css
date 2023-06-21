@@ -1,0 +1,61 @@
+.area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--area-porta-largura);
+    height: var(--area-porta-altura);
+    margin: 5px;  
+}
+
+.estrutura {
+    display: flex;
+    flex-grow: 1;
+    border: solid brown;
+    border-width: 5px 5px 0px 5px;
+    width: 90%;
+    
+}
+
+.portas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    background-color: chocolate;
+    padding: 15px;
+}
+
+.numero{
+    font-size: 3rem;
+
+}
+
+.macaneta {
+    position: absolute;
+    align-self: flex-start; /* dar certo pq o pai 'portas' e display: flex; */
+    top: calc(0.45 * var(--area-porta-altura));
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: brown;
+}
+
+.chao {
+    height: 10px;
+    width: 100%;
+    background-color: #ddd;
+}
+
+.selecionada {
+    border: solid yellow;
+    border-width: 5px 5px 0px 5px;
+}
+
+.selecionada .numero {
+    color: yellow;
+}
+
+.selecionada .macaneta{
+    background-color: yellow;
+}
