@@ -11,6 +11,7 @@
 .estrutura {
     display: flex;
     flex-grow: 1;
+    flex-direction: column-reverse;
     border: solid brown;
     border-width: 5px 5px 0px 5px;
     background-color: #0005;
