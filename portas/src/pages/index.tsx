@@ -1,15 +1,23 @@
 import PortaModel from '../model/porta'
 import Portas from '../components/Portas'
 import { useState } from 'react'
+import { atualizarPortas, criarPortas } from '@/functions/portas'
 
 export default function Home() {
-  const [porta, setPorta] = useState(new PortaModel(1))
-  // const [texto, setTexto] = useState('...')
+
+  const [portas, setPortas] = useState(criarPortas(8,3)) // eh uma funcao return new PortaModel(numeroDaPorta, temPresente)
+
+  function renderizarPortas(){
+    return portas.map(porta => {
+      return <Portas key={porta.numero} value={porta} 
+        onChange={novaPorta => setPortas(atualizarPortas(portas, novaPorta))}/>
+      })
+  }
+
   return (
     <div style={{display:"flex"}}>
-      {/* <input type="text" value={texto}
-        onChange={e => setTexto(e.target.value)}/> */}
-        <Portas value={porta} onChange={novaPorta => setPorta(novaPorta)}/>
+
+        {renderizarPortas()}
   
     </div>
   )
@@ -21,4 +29,16 @@ export default function Home() {
 
 https://www.cod3r.com.br/courses/take/nextjs/lessons/25743627-adicionando-eventos-a-porta-02
 
- */
+*/
+// const [porta, setPorta] = useState(new PortaModel(1))
+// // const [texto, setTexto] = useState('...')
+// return (
+//   <div style={{display:"flex"}}>
+//     {/* <input type="text" value={texto}
+//       onChange={e => setTexto(e.target.value)}/> */}
+//       <Portas value={porta} onChange={novaPorta => setPorta(novaPorta)}/>
+
+//   </div>
+// )
+
+//return <Portas key={porta.numero} value={porta} onChange={console.log}/>

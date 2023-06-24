@@ -28,9 +28,6 @@ export default class PortaModel {
         return this.#aberta
     }
 
-    get fechada() {
-        return !this.aberta
-    }
 
     // preferido usar esses metodo que retornar um instacia desse objeto do que os set.
     desselecionar() {
