@@ -1,23 +1,29 @@
 
 export default class PortaModel {
-    #numero: number
+    #qntPorta: number
     #temPresente: boolean
+    #temMonstro: boolean
     #selecionada: boolean
     #aberta: boolean
 
-    constructor(numero: number, temPresente = false, selecionada = false, aberta = false) {
-        this.#numero = numero
+    constructor(qntPorta: number, temPresente = false, temMonstro = false, selecionada = false, aberta = false) {
+        this.#qntPorta = qntPorta
         this.#temPresente = temPresente
+        this.#temMonstro = temMonstro
         this.#selecionada = selecionada
         this.#aberta = aberta
     }
 
-    get numero() {
-        return this.#numero
+    get qntPorta() {
+        return this.#qntPorta
     }
 
     get temPresente() {
         return this.#temPresente
+    }
+
+    get temMonstro() {
+        return this.#temMonstro
     }
 
     get selecionada() {
@@ -32,18 +38,18 @@ export default class PortaModel {
     // preferido usar esses metodo que retornar um instacia desse objeto do que os set.
     desselecionar() {
         const selecionada = false
-        return new PortaModel(this.numero, this.temPresente, selecionada, this.aberta)        
+        return new PortaModel(this.qntPorta, this.temPresente, this.temMonstro, selecionada, this.aberta)        
     }
 
     alternarSelecao() {
         // esse metodo vai alternar o valor e vai criar uma nova porta sem mexer no valor ogininal
         const selecionada = !this.selecionada
-        return new PortaModel(this.numero, this.temPresente, selecionada, this.aberta)
+        return new PortaModel(this.qntPorta, this.temPresente, this.temMonstro, selecionada, this.aberta)
     }
 
     abrir() {
         const aberta = true
-        return new PortaModel(this.numero, this.temPresente, this.selecionada, aberta)
+        return new PortaModel(this.qntPorta, this.temPresente, this.temMonstro, this.selecionada, aberta)
     }
 }
 

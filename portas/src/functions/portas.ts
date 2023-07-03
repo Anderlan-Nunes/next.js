@@ -1,16 +1,19 @@
 import PortaModel from '@/model/porta';
 
-export function criarPortas(qtde: number, portaSelecionada: number): PortaModel[]{
+export function criarPortas(qtde: number, portaPresente: number, portaMonstro: number[]): PortaModel[]{
     return Array.from({ length: qtde }, (_,indice) => {
         const numeroDaPorta = indice + 1 // +1 pra nao usar o zero
-        const temPresente = numeroDaPorta === portaSelecionada
-        return new PortaModel(numeroDaPorta, temPresente)
+        const temPresente = numeroDaPorta === portaPresente
+        const temMonstro = portaMonstro.includes(numeroDaPorta)
+        console.log(portaMonstro[indice])
+        console.log(temMonstro)
+        return new PortaModel(numeroDaPorta, temPresente, temMonstro)
     }) 
 }
 
 export function atualizarPortas(portas: PortaModel[], portaModificada: PortaModel): PortaModel[] {
     return portas.map(portaAtual => {
-        const igualAModificada = portaAtual.numero === portaModificada.numero
+        const igualAModificada = portaAtual.qntPorta === portaModificada.qntPorta
 
         if(igualAModificada) {
             return portaModificada
@@ -21,3 +24,13 @@ export function atualizarPortas(portas: PortaModel[], portaModificada: PortaMode
         }
     })
 }
+
+/**
+ * function criarPortas(numeroDePortas) {
+    var portas = [];
+    for (var i = 1; i <= numeroDePortas; i++) {
+      portas.push('Porta ' + i);
+    }
+    return portas;
+  }
+ */

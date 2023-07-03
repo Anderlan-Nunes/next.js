@@ -1,15 +1,16 @@
 import styles from '../styles/Portas.module.css'
 import PortaModel from '../model/porta'
 import Presente from './Presente'
+import Monstro from './Monstro'
 
 interface PortaProps {
     value: PortaModel
     onChange: (novaPorta: PortaModel) => void // eu vou conseguir passar um parametro para quem me chamou
-
+    
 }
 
 export default function Portas(props: PortaProps) {
-
+    
     const porta= props.value
     const selecionada = porta.selecionada && !porta.aberta ? styles.selecionada : ''
 
@@ -22,7 +23,7 @@ export default function Portas(props: PortaProps) {
     function renderizarPorta() {
         return (
             <div className={styles.portas}>
-                <div className={styles.numero}>{porta.numero}</div>
+                <div className={styles.numero}>{porta.qntPorta}</div>
                 <div className={styles.macaneta}
                     onClick={abrir}
                 ></div>
@@ -32,7 +33,7 @@ export default function Portas(props: PortaProps) {
     return (
         <div className={styles.area} onClick={alternarSelecao}>
             <div className={`${styles.estrutura} ${selecionada} `}>
-                {!porta.aberta ? renderizarPorta() : porta.temPresente ? <Presente/> : false}
+                {!porta.aberta ? renderizarPorta() : porta.temPresente ? <Presente /> : porta.temMonstro ? <Monstro /> : false }
             </div>
             <div className={styles.chao}></div>
         </div>
