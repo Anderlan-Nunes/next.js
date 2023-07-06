@@ -1,11 +1,13 @@
-import styles from '../styles/Jogo.module.css'
+import styles from '../../../styles/Jogo.module.css'
 import { useState } from "react"
 
 import Portas from "@/components/Portas"
 import { atualizarPortas, criarPortas } from "@/functions/portas"
+import Botao from '@/components/Botao'
+import Link from 'next/link'
 
 export default function jogo() {
-    const [portas, setPortas] = useState(criarPortas(20, 3, [5, 2])) // eh uma funcao return new PortaModel(numeroDaPorta, temPresente)
+    const [portas, setPortas] = useState(criarPortas(3, 3, [5, 2])) // eh uma funcao return new PortaModel(numeroDaPorta, temPresente)
 
     function renderizarPortas() {
         return portas.map(porta => {
@@ -17,6 +19,11 @@ export default function jogo() {
         <div className={styles.jogo}>
             <div className={styles.portas}>
                 {renderizarPortas()}
+            </div>
+            <div>
+                <Link href={`/`}>
+                    <Botao children={"Reiniciar"} style={{color: "white"}}/>
+                </Link>
             </div>
         </div>
     )
