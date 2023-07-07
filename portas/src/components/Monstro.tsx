@@ -11,20 +11,32 @@ const imageProps: CSSProperties = {
         transform:"translate(-50%, -50%)",
         zIndex: "9999",
 }
- 
-export default function Monstro(props: CSSProperties) {
+interface MonstroProps{
+    [Key: string]: CSSProperties;
+}
+const mostrar:MonstroProps  = {
+    block:{
+        display: 'block'
+    },
+    none:{
+        display: 'none'
+        
+    }
+}
+export default function Monstro(props: MonstroProps) {
+    
 
-    const [visivel, setVisivel] = useState("block")
+    const [visivel, setVisivel] = useState(mostrar.block)
     useEffect(() => {
         const timer = setTimeout(() => {
             console.log('Imagem desaparece após 5 segundos');
-            setVisivel("none")   
+            setVisivel(mostrar.none)   
         }, 5000);
       }, []);
 
     
   return (
-    <div style={{display: visivel}}>
+    <div style={visivel}>
         <Image
             src={susto}
             alt="Picture of the author"
