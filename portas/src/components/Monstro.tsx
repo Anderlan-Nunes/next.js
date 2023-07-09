@@ -17,6 +17,7 @@ interface MonstroProps{
 const mostrar:MonstroProps  = {
     block:{
         display: 'block'
+        
     },
     none:{
         display: 'none'

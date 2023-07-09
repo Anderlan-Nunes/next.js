@@ -22,7 +22,7 @@ export default function jogo() {
             </div>
             <div>
                 <Link href={`/`}>
-                    <Botao children={"Reiniciar"} style={{color: "white"}}/>
+                    <Botao children={"Reiniciar"} corBotao='red'/>
                 </Link>
             </div>
         </div>
