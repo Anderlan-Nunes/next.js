@@ -1,11 +1,12 @@
 import PortaModel from '@/model/porta';
 
-export function criarPortas(qtde: number, portaPresente: number, portaMonstro: number[]): PortaModel[]{
+export function criarPortas(qtde: number, portaPresente: number, portaMonstro: number): PortaModel[]{
     return Array.from({ length: qtde }, (_,indice) => {
         const numeroDaPorta = indice + 1 // +1 pra nao usar o zero
         const temPresente = numeroDaPorta === portaPresente
-        const temMonstro = portaMonstro.includes(numeroDaPorta)
-        console.log(portaMonstro[indice])
+        const temMonstro = numeroDaPorta === portaMonstro
+        //const temMonstro = portaMonstro.includes(numeroDaPorta)
+       // console.log(portaMonstro[indice])
         console.log(temMonstro)
         return new PortaModel(numeroDaPorta, temPresente, temMonstro)
     }) 

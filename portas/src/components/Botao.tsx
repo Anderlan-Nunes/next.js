@@ -4,70 +4,23 @@ import { CSSProperties, useEffect, useState  } from 'react'
 interface BotaoProps {
     children : any
     corBotao : 'blue' | 'red' | 'white'
-    style?: CSSProperties
     onClick?: () => void
-    corBotao2?: CSSProperties
 }
 
-interface MonstroProps{
-    [Key: string]: CSSProperties;
+const changeBackground = (e: any, forca: number) => {
+    e.target.style.opacity = forca
 }
-const mostrar:MonstroProps  = {
-    corRed:{
-        backgroundColor: '#ff0000b4'
-
-    },
-    corBlue:{
-        backgroundColor: 'blue',     
-    },
-    corWhite:{
-        backgroundColor: 'black',      
-    }
-}
-
-
-// function changeBackground(e: any) {
-//     e.target.style.background = 'red';
-//   }
-
-//   function changeBackground2(e: any) {
-//     e.target.style.background = 'green';
-//   }
-  const changeBackground3 = (e: any)  => {
-    e.target.style.background = 'red';
-  }
-  const changeBackground4 = (e: any) => {
-    e.target.style.background = 'blue';
-  }
-
 export default function Botao (props: BotaoProps) {
 
-    const [isShown, setIsShown] = useState(false);
-    // useEffect()
-    // if(props.corBotao == 'red' && isShown) {
-    //    var corBotao2 = mostrar.corRed
-    // }else if(props.corBotao == 'red' && !isShown){
-    //     var corBotao2 = mostrar.corWhite
-    // }else{
-    //    var corBotao2 = mostrar.corBlue 
-    // }
+
 
     return (
         <button 
-            onMouseEnter={() => setIsShown(true)}
-            onMouseLeave={() => setIsShown(false)}
-            // onMouseEnter={changeBackground3}
-            // onMouseLeave={changeBackground4}
-            // onMouseOver={changeBackground}
-            // onMouseOut={changeBackground2}
             className={styles.botao}
+            onMouseEnter={(e) => changeBackground(e,0.7) }
+            onMouseLeave={(e) => changeBackground(e,10)}
             onClick={props.onClick}
-            style={
-                {
-                    display: 'flex',
-                    background: 'azul'
-                }
-            }
+            style={{background:`${props.corBotao}`}}
         >{props.children}</button>
     )
 }
@@ -94,3 +47,5 @@ export default function Botao (props: BotaoProps) {
 //   }
   
 //   export default App;
+//https://upmostly.com/tutorials/react-onhover-event-handling-with-examples
+//https://stackoverflow.com/questions/66784370/show-different-images-for-each-list-item-with-react-onmouseenter-and-onmouseleav
