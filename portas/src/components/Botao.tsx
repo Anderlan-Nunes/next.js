@@ -1,26 +1,25 @@
 import styles from '../styles/Botao.module.css'
-import { CSSProperties, useEffect, useState  } from 'react'
 
 interface BotaoProps {
     children : any
+    value?: number
     corBotao : 'blue' | 'red' | 'white'
-    onClick?: () => void
+    onChange?: (e: any) => void
+    
 }
 
 const changeBackground = (e: any, forca: number) => {
     e.target.style.opacity = forca
 }
 export default function Botao (props: BotaoProps) {
-
-
-
     return (
-        <button 
+
+        <button
             className={styles.botao}
-            onMouseEnter={(e) => changeBackground(e,0.7) }
-            onMouseLeave={(e) => changeBackground(e,10)}
-            onClick={props.onClick}
-            style={{background:`${props.corBotao}`}}
+            onMouseEnter={(e) => changeBackground(e, 0.7)}
+            onMouseLeave={(e) => changeBackground(e, 10)}
+            onClick={props.onChange}
+            style={{ background: `${props.corBotao}` }}
         >{props.children}</button>
     )
 }
