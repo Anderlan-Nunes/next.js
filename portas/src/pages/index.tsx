@@ -7,31 +7,26 @@ import { useState } from 'react'
 
 export default function Home() {
 
-    const [qntPorta, setQntPorta] = useState('');
+    const [qntPorta, setQntPorta] = useState('3');
+    const [portaPresente, setPortaPresente] = useState('1');
+    console.log(qntPorta)
   
-    const childToParent = (childdata) => {
-        setQntPorta(childdata);
-        console.log(qntPorta)
-    }
-
-
     return (
         <div className={styles.home}>
-            <span>{qntPorta}</span>
             <div>
                 <Cartao bgcolor='#fd0a60' fonteColor={'#fff'}>Porta Premiada</Cartao>
                 <Cartao >
                     Quantidade de portas:
-                    <EntradaNum  childToParent={childToParent}/>
+                    <EntradaNum childToParent={(qntPorta) => setQntPorta(qntPorta)}/>
                 </Cartao>
             </div>
             <div>
                 <Cartao>
                     Porta com Presente:
-                    <EntradaNum />
+                    <EntradaNum childToParent={(portaPresente) => setPortaPresente(portaPresente)}/>
                 </Cartao>
                 <Cartao bgcolor='#b6d9c3'>
-                    <Link href={`/jogo/7/3`}>
+                    <Link href={`/jogo/${qntPorta}/${portaPresente}`}>
                         <Botao children='Iniciar' corBotao='white' />
                     </Link>
                 </Cartao>
