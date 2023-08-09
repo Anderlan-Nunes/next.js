@@ -2,7 +2,6 @@ import styles from '../styles/Botao.module.css'
 
 interface BotaoProps {
     children : any
-    value?: number
     corBotao : 'blue' | 'red' | 'white'
     onChange?: (e: any) => void
     
