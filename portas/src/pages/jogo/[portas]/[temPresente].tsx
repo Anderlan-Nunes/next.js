@@ -11,8 +11,17 @@ import Botao from '@/components/Botao'
 export default function jogo() {
 
     const router: any = useRouter()
+    const [valida, setValida] = useState(false)
     const [portas, setPortas] = useState<any[]>([]) // eh uma funcao return new PortaModel(numeroDaPorta, temPresente)
 
+    useEffect(() =>{
+        const portas = +router.query.portas
+        const temPresente = +router.query.temPresente
+
+        const qntPortaValidas = portas >= 3 && portas <= 30
+        const presentValido = temPresente >= 1 && temPresente <= portas
+        setValida(qntPortaValidas && presentValido)  
+    },[portas])
    // console.log(router?.query)
     useEffect(() =>{
         const portas = +router.query.portas
@@ -29,7 +38,10 @@ export default function jogo() {
     return (
         <div className={styles.jogo}>
             <div className={styles.portas}>
-                {renderizarPortas()}
+                {valida ?
+                    renderizarPortas():
+                    <h1>{'Valores passados são invalidos ¯\_(ツ)_/¯'}</h1>
+                }
             </div>
             <div>
                 <Link href={`/`}>
